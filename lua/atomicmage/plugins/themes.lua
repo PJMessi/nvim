@@ -3,9 +3,11 @@ local M = {}
 local function SetupVesper(transparent)
   return {
     'datsfilipe/vesper.nvim',
+    -- dir = "/Users/prajwalshrestha/projects/personal/nvim/vesper.nvim/",
     lazy = false,
     priority = 1000,
     config = function()
+      local colors = require("vesper.colors")
       require('vesper').setup({
         transparent = transparent, -- Boolean: Sets the background to transparent
         italics = {
