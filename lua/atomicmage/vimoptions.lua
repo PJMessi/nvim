@@ -91,24 +91,26 @@ vim.diagnostic.config {
 }
 
 -- atomicmage: set cursor to block mode on all modes.
--- vim.opt.guicursor = "n-v-i-c:block-Cursor"
+vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
--- What this does is, for visual mode, the cursor block is white, and when i enter the insert mode, it defaults to the original cursor color (set in the terminal)
-vim.cmd [[
-  " Use terminal escape sequences to change cursor color based on mode
-  let &t_SI = "\<Esc>]12;#00ff00\x7" " Insert mode - green
-  let &t_SR = "\<Esc>]12;#d70000\x7" " Replace mode - red
-  let &t_EI = "\<Esc>]12;#5f87af\x7" " Normal mode - blue
+-- atomicmage: update the cursor line color.
+local line_color_default = "#333333";
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("highlight CursorLine guibg=".. line_color_default)
+  end
+})
 
-  " Still set the highlight groups (in case your terminal supports them)
-  highlight Cursor guibg=#5f87af ctermbg=67
-  highlight iCursor guibg=#00ff00 ctermbg=46
-  highlight rCursor guibg=#d70000 ctermbg=124
-
-  set guicursor=n-v-c:block-Cursor/lCursor
-                \,i-ci-ve:block-iCursor
-                \,r-cr:block-rCursor
-                \,o:hor50-Cursor/lCursor
-                \,sm:block-iCursor
-                \,a:blinkwait1000-blinkon500-blinkoff250
-]]
+-- atomicmage: disable the cursor line on insert mode.
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    -- vim.cmd("highlight CursorLine guibg=#1a1a1a")
+    vim.cmd("highlight CursorLine guibg=NONE")
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.cmd("highlight CursorLine guibg=".. line_color_default)
+  end,
+})
