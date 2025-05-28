@@ -119,6 +119,11 @@ M.setup = function(opts)
               buffer = event.buf,
               callback = vim.lsp.buf.clear_references,
             })
+
+            -- atomicmage: If there is eslint, disable prettier.
+            if client.name ~= "eslint" then
+              client.server_capabilities.documentFormattingProvider = false
+            end
           end
 
           -- atomicmage

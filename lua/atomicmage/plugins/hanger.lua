@@ -2,8 +2,8 @@ local M = {}
 
 M.setup = function()
   return {
-    -- 'https://github.com/PJMessi/hanger',
-    dir = "/Users/prajwalshrestha/projects/personal/nvim/hanger",
+    'https://github.com/PJMessi/hanger',
+    -- dir = "/Users/prajwalshrestha/projects/personal/nvim/hanger",
     lazy = false,
     cmd = { "RunSingleTest", "RerunSingleTest", "RunFileTests", "ShowRunnables" },
     dependencies = {

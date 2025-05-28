@@ -12,7 +12,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- vim.api.nvim_create_autocmd('VimEnter', {
---   desc = 'Enable centered layout on startup',
---   command = "NoNeckPain"
--- })
+-- rest.nvim hack
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "json",
+    callback = function(ev)
+        vim.bo[ev.buf].formatprg = "jq"
+    end,
+})

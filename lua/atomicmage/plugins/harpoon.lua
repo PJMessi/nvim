@@ -14,10 +14,13 @@ M.setup = function(opts)
       -- REQUIRED
 
       -- append to the list
-      vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
+      vim.keymap.set('n', '<leader>ha', function()
+        harpoon:list():add()
+        print("Harpoon: appended to the list")
+      end)
 
       -- display list ui
-      vim.keymap.set('n', '<leader>hd', function()
+      vim.keymap.set('n', '<leader>hh', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = 'List harpooned list' })
 
@@ -79,7 +82,7 @@ M.setup = function(opts)
         }):find()
       end
 
-      vim.keymap.set("n", "<leader>hh",
+      vim.keymap.set("n", "<leader>hd",
         function()
           toggle_telescope(harpoon:list())
         end,

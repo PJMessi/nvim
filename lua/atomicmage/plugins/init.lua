@@ -274,19 +274,21 @@ require('lazy').setup {
 
   require("atomicmage.plugins.oil-nvim").setup(),
 
-  require("atomicmage.plugins.obsidian").setup(),
+  -- require("atomicmage.plugins.obsidian").setup(),
 
-  require("atomicmage.plugins.zen-mode").setup(),
+  -- require("atomicmage.plugins.zen-mode").setup(),
 
   require("atomicmage.plugins.vim-tmux-navigator").setup(),
 
-  require("atomicmage.plugins.flash").setup(),
+  -- require("atomicmage.plugins.flash").setup(),
 
   require("atomicmage.plugins.lualine").setup(),
 
   require("atomicmage.plugins.telescope-frecency").setup(),
 
   require("atomicmage.plugins.rest-nvim").setup(),
+
+  -- require("atomicmage.plugins.kulala").setup(),
 
   require("atomicmage.plugins.dadbod").setup(),
 

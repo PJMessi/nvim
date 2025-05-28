@@ -98,14 +98,10 @@ local function SetRosePine(enableTransparency)
         },
 
         palette = {
-          -- Override the builtin palette per variant
-          -- moon = {
-          --     base = '#18191a',
-          --     overlay = '#363738',
-          -- },
+          main = {
+            -- love = "#ebbcba"
+          },
           moon = {
-            -- base = "#faf4ed",
-            -- surface = "#fffaf3",
           }
         },
 
@@ -131,8 +127,8 @@ local function SetRosePine(enableTransparency)
         end,
       })
 
-      vim.cmd("colorscheme rose-pine")
-      -- vim.cmd("colorscheme rose-pine-main")
+      -- vim.cmd("colorscheme rose-pine")
+      vim.cmd("colorscheme rose-pine-main")
       -- vim.cmd("colorscheme rose-pine-moon")
       -- vim.cmd("colorscheme rose-pine-dawn")
     end,
@@ -379,6 +375,39 @@ local function SetDarkVoid()
   }
 end
 
+local function SetCatppuccin(transparent)
+  return {
+    'catppuccin/nvim',
+    lazy = false,
+    priority = 1000,
+    -- you can set set configuration options here
+    config = function()
+      require('catppuccin').setup({
+        transparent_background = transparent,
+        no_italic = true
+      })
+
+      vim.cmd('colorscheme catppuccin-mocha')
+    end
+  }
+end
+
+local function SetTokioNight(transparent)
+  return {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    -- you can set set configuration options here
+    config = function()
+      require('tokyonight').setup({
+        transparent_background = transparent
+      })
+
+      vim.cmd('colorscheme tokyonight-moon')
+    end
+  }
+end
+
 local function SetBase16()
   return {
     'RRethy/base16-nvim',
@@ -397,7 +426,7 @@ local function SetBase16()
       })
 
       -- vim.cmd('colorscheme base16-black-metal-gorgoroth')
-      vim.cmd('colorscheme base16-rose-pine')
+      vim.cmd('colorscheme base16-vesper')
       -- base16-rose-pine
       -- base16-rose-pine-dawn
       -- base16-rose-pine-moon
@@ -425,12 +454,16 @@ local function setTheme(name)
     return SetBase16()
   elseif name == "vesper" then
     return SetupVesper(false)
+  elseif name == "tokionight" then
+    return SetTokioNight(false)
+  elseif name == "catppuccin" then
+    return SetCatppuccin(true)
   end
-  return SetRosePine(false)
+  return SetRosePine(true)
 end
 
 M.setup = function(_)
-  return setTheme("vesper")
+  return setTheme("rosepine")
 end
 
 return M
