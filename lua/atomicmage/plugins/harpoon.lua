@@ -20,7 +20,7 @@ M.setup = function(opts)
       end)
 
       -- display list ui
-      vim.keymap.set('n', '<leader>hh', function()
+      vim.keymap.set('n', '<leader>hd', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = 'List harpooned list' })
 
@@ -82,7 +82,7 @@ M.setup = function(opts)
         }):find()
       end
 
-      vim.keymap.set("n", "<leader>hd",
+      vim.keymap.set("n", "<leader>hh",
         function()
           toggle_telescope(harpoon:list())
         end,

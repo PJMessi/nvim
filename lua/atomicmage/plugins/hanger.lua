@@ -2,10 +2,10 @@ local M = {}
 
 M.setup = function()
   return {
-    'https://github.com/PJMessi/hanger',
-    -- dir = "/Users/prajwalshrestha/projects/personal/nvim/hanger",
+    -- 'https://github.com/pjmessi/hanger',
+    dir = "/Users/prajwalshrestha/projects/personal/nvim/hanger",
     lazy = false,
-    cmd = { "RunSingleTest", "RerunSingleTest", "RunFileTests", "ShowRunnables" },
+    cmd = { "RunTest", "ReRunTest", "RunAllTests", "ShowTests" },
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim",
@@ -13,18 +13,20 @@ M.setup = function()
     },
     config = function()
       require("hanger").setup({
-        output = "zellij",       -- options: 'term' / 'zellij'
-        floating_pane = true, -- only valid for 'zellij' 'output'
+        -- options: 'term' / 'zellij'
+        output = "zellij",
+        -- only valid for 'zellij' 'output'
+        floating_pane = true,
       })
 
-      vim.api.nvim_set_keymap('n', '<leader>rt', ':RunSingleTest<CR>',
+      vim.api.nvim_set_keymap('n', '<leader>rt', ':RunTest<CR>',
         { desc = '[R]un [T]est', noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>rrt', ':RerunTest<CR>',
+      vim.api.nvim_set_keymap('n', '<leader>rrt', ':ReRunTest<CR>',
         { desc = '[R]e [R]un [T]est', noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>rft', ':RunFileTests<CR>',
-        { desc = '[R]un [F]ile [T]ests', noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>sr', ':ShowRunnables<CR>',
-        { desc = '[S]how [R]unnables', noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>rat', ':RunAllTests<CR>',
+        { desc = "[R]un [A]ll [T]ests", noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>st', ':ShowTests<CR>',
+        { desc = '[S]how [T]ests', noremap = true, silent = true })
     end,
   }
 end
