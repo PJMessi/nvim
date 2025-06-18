@@ -120,8 +120,9 @@ M.setup = function(opts)
               callback = vim.lsp.buf.clear_references,
             })
 
-            -- atomicmage: If there is eslint, disable prettier.
-            if client.name ~= "eslint" then
+            -- atomicmage: Disable prettier formatting.
+            local ft = vim.bo[event.buf].filetype
+            if client.name == "prettier" and (ft == "javascript" or ft == "typescript") then
               client.server_capabilities.documentFormattingProvider = false
             end
           end
