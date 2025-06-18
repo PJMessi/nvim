@@ -459,7 +459,7 @@ local function setTheme(name)
   elseif name == "catppuccin" then
     return SetCatppuccin(true)
   end
-  return SetRosePine(true)
+  return SetRosePine(false)
 end
 
 M.setup = function(_)
