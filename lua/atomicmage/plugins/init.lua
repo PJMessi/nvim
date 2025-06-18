@@ -9,7 +9,7 @@
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup {
+require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -24,24 +24,6 @@ require('lazy').setup {
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',    opts = {} },
-
-  -- Here is a more advanced example where we pass configuration
-  -- options to `gitsigns.nvim`. This is equivalent to the following lua:
-  --    require('gitsigns').setup({ ... })
-  --
-  -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
 
   -- NOTE: Plugins can also be configured to run lua code when they are loaded.
   --
@@ -98,49 +80,9 @@ require('lazy').setup {
 
   require("atomicmage.plugins.lsp").setup(),
 
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    enabled = false,
-    opts = {
-      notify_on_error = false,
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
-      },
-    },
-  },
+  require("atomicmage.plugins.autoformat").setup(),
 
   require("atomicmage.plugins.autocomplete").setup(),
-
-  -- { -- You can easily change to a different colorscheme.
-  --   -- Change the name of the colorscheme plugin below, and then
-  --   -- change the command in the config to whatever the name of that colorscheme is
-  --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-  --   'folke/tokyonight.nvim',
-  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- Load the colorscheme here
-  --     vim.cmd.colorscheme 'tokyonight-night'
-  --
-  --     -- Transparent background (The Primegan - atomicmage)
-  --     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-  --     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-  --
-  --     -- You can configure highlights by doing something like
-  --     vim.cmd.hi 'Comment gui=none'
-  --   end,
-  -- },
 
   require("atomicmage.plugins.themes").setup(),
 
@@ -278,7 +220,7 @@ require('lazy').setup {
 
   -- require("atomicmage.plugins.zen-mode").setup(),
 
-  require("atomicmage.plugins.vim-tmux-navigator").setup(),
+  -- require("atomicmage.plugins.vim-tmux-navigator").setup(),
 
   -- require("atomicmage.plugins.flash").setup(),
 
@@ -290,11 +232,33 @@ require('lazy').setup {
 
   -- require("atomicmage.plugins.kulala").setup(),
 
-  require("atomicmage.plugins.dadbod").setup(),
+  -- require("atomicmage.plugins.dadbod").setup(),
 
   require("atomicmage.plugins.hanger").setup(),
+
+  require("atomicmage.plugins.git-signs").setup(),
 
   -- require("atomicmage.plugins.maked").setup(),
 
   -- require("atomicmage.plugins.msgme").setup(),
-}
+}, {
+  ui = {
+    -- If you are using a Nerd Font: set icons to an empty table which will use the
+    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
+})

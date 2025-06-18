@@ -102,7 +102,7 @@ M.setup = function(opts)
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- atomicmage
-          map('<leader>f', vim.lsp.buf.format, 'Format code with LSP')
+          -- map('<leader>f', vim.lsp.buf.format, 'Format code with LSP')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -120,12 +120,6 @@ M.setup = function(opts)
               buffer = event.buf,
               callback = vim.lsp.buf.clear_references,
             })
-
-            -- atomicmage: Disable prettier formatting.
-            local ft = vim.bo[event.buf].filetype
-            if client.name == "prettier" and (ft == "javascript" or ft == "typescript") then
-              client.server_capabilities.documentFormattingProvider = false
-            end
           end
 
           -- atomicmage
