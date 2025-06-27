@@ -23,7 +23,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',    opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- NOTE: Plugins can also be configured to run lua code when they are loaded.
   --
@@ -40,7 +40,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -54,17 +54,16 @@ require('lazy').setup({
         -- ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         -- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 
-        { "<leader>c",  group = "[C]ode" },
-        { "<leader>c_", hidden = true },
-        { "<leader>d",  group = "[D]ocument" },
-        { "<leader>d_", hidden = true },
-        { "<leader>r",  group = "[R]ename" },
-        { "<leader>r_", hidden = true },
-        { "<leader>s",  group = "[S]earch" },
-        { "<leader>s_", hidden = true },
-        { "<leader>w",  group = "[W]orkspace" },
-        { "<leader>w_", hidden = true },
-
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>c_', hidden = true },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>d_', hidden = true },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>r_', hidden = true },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>s_', hidden = true },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>w_', hidden = true },
       }
     end,
   },
@@ -76,15 +75,15 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  require("atomicmage.plugins.telescope").setup(),
+  require('atomicmage.plugins.telescope').setup(),
 
-  require("atomicmage.plugins.lsp").setup(),
+  require('atomicmage.plugins.lsp').setup(),
 
-  require("atomicmage.plugins.autoformat").setup(),
+  require('atomicmage.plugins.autoformat').setup(),
 
-  require("atomicmage.plugins.autocomplete").setup(),
+  require('atomicmage.plugins.autocomplete').setup(),
 
-  require("atomicmage.plugins.themes").setup(),
+  require('atomicmage.plugins.themes').setup(),
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -131,7 +130,7 @@ require('lazy').setup({
     build = ':TSUpdate',
     dependencies = {
       -- Atomicmage: This is required for navigating the functions.
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      'nvim-treesitter/nvim-treesitter-textobjects',
     },
     config = function()
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -148,26 +147,26 @@ require('lazy').setup({
         textobjects = {
           select = {
             enable = true,
-            lookahead = true,             -- Automatically jump forward to textobject
+            lookahead = true, -- Automatically jump forward to textobject
             keymaps = {
-              ["if"] = "@function.inner", -- Select inside function (without function keyword/signature)
-              ["af"] = "@function.outer", -- Select around function (including signature/comments)
+              ['if'] = '@function.inner', -- Select inside function (without function keyword/signature)
+              ['af'] = '@function.outer', -- Select around function (including signature/comments)
             },
           },
           move = {
             enable = true,
-            set_jumps = true,             -- Whether to set jumps in the jumplist
+            set_jumps = true, -- Whether to set jumps in the jumplist
             goto_next_start = {
-              ["]f"] = "@function.outer", -- Jump to next function start
+              [']f'] = '@function.outer', -- Jump to next function start
             },
             goto_previous_start = {
-              ["[f"] = "@function.outer", -- Jump to previous function start
+              ['[f'] = '@function.outer', -- Jump to previous function start
             },
             goto_next_end = {
-              ["]F"] = "@function.outer", -- Jump to next function end
+              [']F'] = '@function.outer', -- Jump to next function end
             },
             goto_previous_end = {
-              ["[F"] = "@function.outer", -- Jump to previous function end
+              ['[F'] = '@function.outer', -- Jump to previous function end
             },
           },
         },
@@ -202,41 +201,43 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 
   -- atomicmage
-  require("atomicmage.plugins.harpoon").setup(),
+  require('atomicmage.plugins.harpoon').setup(),
 
-  require("atomicmage.plugins.fugitive").setup(),
+  require('atomicmage.plugins.fugitive').setup(),
 
-  require("atomicmage.plugins.trouble").setup(),
+  require('atomicmage.plugins.trouble').setup(),
 
-  require("atomicmage.plugins.nvim-autopairs").setup(),
+  require('atomicmage.plugins.nvim-autopairs').setup(),
 
   -- require("atomicmage.plugins.copilot-chat").setup(),
 
-  require("atomicmage.plugins.undo-tree").setup(),
+  require('atomicmage.plugins.undo-tree').setup(),
 
-  require("atomicmage.plugins.oil-nvim").setup(),
+  require('atomicmage.plugins.oil-nvim').setup(),
 
   -- require("atomicmage.plugins.obsidian").setup(),
 
   -- require("atomicmage.plugins.zen-mode").setup(),
 
-  -- require("atomicmage.plugins.vim-tmux-navigator").setup(),
+  require('atomicmage.plugins.vim-tmux-navigator').setup(),
 
   -- require("atomicmage.plugins.flash").setup(),
 
-  require("atomicmage.plugins.lualine").setup(),
+  require('atomicmage.plugins.lualine').setup(),
 
-  require("atomicmage.plugins.telescope-frecency").setup(),
+  require('atomicmage.plugins.telescope-frecency').setup(),
 
-  require("atomicmage.plugins.rest-nvim").setup(),
+  require('atomicmage.plugins.rest-nvim').setup(),
 
   -- require("atomicmage.plugins.kulala").setup(),
 
   -- require("atomicmage.plugins.dadbod").setup(),
 
-  require("atomicmage.plugins.hanger").setup(),
+  require('atomicmage.plugins.hanger').setup(),
 
-  require("atomicmage.plugins.git-signs").setup(),
+  require('atomicmage.plugins.git-signs').setup(),
+
+  -- require('atomicmage.plugins.gameoflife').setup(),
 
   -- require("atomicmage.plugins.maked").setup(),
 

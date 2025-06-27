@@ -160,8 +160,7 @@ M.setup = function(opts)
           --   }
           -- }
         },
-        rust_analyzer = {
-        },
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -198,19 +197,18 @@ M.setup = function(opts)
         },
       }
 
-
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
       --    :Mason
       --
       --  You can press `g?` for help in this menu
-      require('mason').setup({
+      require('mason').setup {
         registries = {
           'github:Crashdummyy/mason-registry',
           'github:mason-org/mason-registry',
         },
-      })
+      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
