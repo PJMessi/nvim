@@ -109,9 +109,9 @@ local function SetRosePine(enableTransparency)
           -- Comment = { fg = "foam" },
           -- VertSplit = { fg = "muted", bg = "muted" },
           Comment = { italic = false },
-          -- Type = { bold = true },
-          -- ["@constant"] = { bold = true },
-          -- ["@type"] = { bold = true },
+          Type = { bold = true },
+          ["@constant"] = { bold = true },
+          ["@type"] = { bold = true },
         },
 
         before_highlight = function(group, highlight, palette)
