@@ -79,10 +79,12 @@ M.setup = function()
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      local utils = require("telescope.utils")
+      local utils = require 'telescope.utils'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>pf', builtin.find_files, {
+      vim.keymap.set('n', '<leader>pf', function()
+        builtin.find_files { hidden = true }
+      end, {
         desc = '[S]earch [F]iles',
       })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
@@ -91,7 +93,13 @@ M.setup = function()
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader><leader>', function()
+        require('telescope.builtin').buffers {
+          sort_mru = true,
+          ignore_current_buffer = true,
+        }
+      end, { desc = 'Buffers (MRU sorted)' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
