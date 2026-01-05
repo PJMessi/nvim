@@ -60,14 +60,14 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 0
 
 -- atomicmage, ThePrimegan
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = '100'
 
 -- atomicmage, Bordered corners
 -- https://vi.stackexchange.com/questions/39074/user-borders-around-lsp-floating-windows
@@ -86,31 +86,28 @@ vim.opt.colorcolumn = "100"
 -- atomicmage
 vim.diagnostic.config {
   virtual_text = {
-    current_line = true
-  }
+    current_line = true,
+  },
 }
 
 -- atomicmage: set cursor to block mode on all modes.
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+-- vim.opt.guicursor = 'n-v-i-c:block-Cursor'
+-- Set mode-specific cursor colors and shapes
+-- vim.opt.guicursor = {
+--   'n-v-c:block-Cursor', -- Normal, Visual, Command: block cursor, subtle (#6e6a86)
+--   'i-ci-ve:block-CursorIM', -- Insert, Command-line Insert, Visual-extend: block cursor, foam (#9ccfd8)
+--   'v:block-Visual', -- Visual mode: block cursor, iris (#c4a7e7)
+-- }
 
--- atomicmage: update the cursor line color.
-local line_color_default = "#333333";
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    vim.cmd("highlight CursorLine guibg=".. line_color_default)
-  end
-})
-
--- atomicmage: disable the cursor line on insert mode.
-vim.api.nvim_create_autocmd("InsertEnter", {
-  callback = function()
-    -- vim.cmd("highlight CursorLine guibg=#1a1a1a")
-    vim.cmd("highlight CursorLine guibg=NONE")
-  end,
-})
-vim.api.nvim_create_autocmd("InsertLeave", {
-  callback = function()
-    vim.cmd("highlight CursorLine guibg=".. line_color_default)
-  end,
-})
+-- atomicmage: change the cursor color on insert mode.
+-- vim.api.nvim_create_autocmd('InsertEnter', {
+--   callback = function()
+--     vim.cmd 'highlight CursorLine guibg=NONE'
+--   end,
+-- })
+-- vim.api.nvim_create_autocmd('InsertLeave', {
+--   callback = function()
+--     -- Reapply colorscheme to restore defaults
+--     vim.cmd('colorscheme ' .. vim.g.colors_name)
+--   end,
+-- })

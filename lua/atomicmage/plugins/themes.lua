@@ -42,6 +42,20 @@ local function SetGruvBox()
   }
 end
 
+local function SetOneDark(enableTransparency)
+  return {
+    "navarasu/onedark.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require('onedark').setup {
+        style = 'darker'
+      }
+      -- Enable theme
+      require('onedark').load()
+    end
+  }
+end
+
 local function SetRosePine(enableTransparency)
   return {
     'rose-pine/neovim',
@@ -109,9 +123,9 @@ local function SetRosePine(enableTransparency)
           -- Comment = { fg = "foam" },
           -- VertSplit = { fg = "muted", bg = "muted" },
           Comment = { italic = false },
-          Type = { bold = true },
-          ["@constant"] = { bold = true },
-          ["@type"] = { bold = true },
+          -- Type = { bold = true },
+          -- ["@constant"] = { bold = true },
+          -- ["@type"] = { bold = true },
         },
 
         before_highlight = function(group, highlight, palette)
@@ -458,6 +472,8 @@ local function setTheme(name)
     return SetTokioNight(false)
   elseif name == "catppuccin" then
     return SetCatppuccin(true)
+  elseif name == "onedark" then
+    return SetOneDark(true)
   end
   return SetRosePine(false)
 end

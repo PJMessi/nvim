@@ -34,7 +34,7 @@ M.setup = function(_)
               cond = function()
                 return vim.bo.buftype ~= 'terminal' -- Only show in non-terminal buffers
               end,
-              path = 0,                             -- Use relative path (0 = just filename, 1 = relative path, 2 = absolute path)
+              path = 1,                             -- Use relative path (0 = just filename, 1 = relative path, 2 = absolute path)
               shorting_target = 40,                 -- Shortens path to leave 40 spaces in window for other components
               symbols = {
                 modified = '[+]',                   -- Text to show when the file is modified

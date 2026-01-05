@@ -13,9 +13,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- rest.nvim hack
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "json",
-    callback = function(ev)
-        vim.bo[ev.buf].formatprg = "jq"
-    end,
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'json',
+  callback = function(ev)
+    vim.bo[ev.buf].formatprg = 'jq'
+  end,
 })
+
